@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="libs/p5.min.js"></script>
+    <script src="libs/tone.min.js"></script>
+    <script src="libs/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/webmidi"></script>
+    <script src="randomization.js"></script>
+    <script src="keyboard-manager.js"></script>
+    <script src="synth-manager.js"></script>
+    <script src="midi-manager.js"></script>
+    <script src="script.js"></script>
+    
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
+  </head>
+  <body>
+    
+
+
+
+
+    <div id='main-container'>
+        
+      <div id='synth-controls-container'>
+
+        
+        <div class="synth-block-container">
+          <div class="oscillator-container">
+              <p class="component-tag">Oscillator 1</p>
+              <div class="synth-params-list">
+
+                <div class="synth-param-pair-container">
+                  <p class="synth-param-name" >Type</p>
+                  <button class="synth-param-value" id="oscillator1-type">Sine</p>
+                </div>
+                <div class="synth-param-pair-container">
+                    <p class="synth-param-name">Type</p>
+                    <button class="synth-param-value" id="oscillator1-volume">Sine</p>
+                </div>
+              </div>
+          </div>        
+          <div class="oscillator-container">
+              <p class="component-tag">Oscillator 2</p>
+              <div class="synth-params-list">
+                  <div class="synth-param-pair-container">
+                      <p class="synth-param-name">Type</p>
+                      <button class="synth-param-value" id="oscillator2-type">Sine</p>
+                    </div>
+                    <div class="synth-param-pair-container">
+                        <p class="synth-param-name">Type</p>
+                        <button class="synth-param-value" id="oscillator2-volume">Sine</p>
+                    </div>
+              </div>
+
+              
+          </div>        
+        </div>
+
+
+        <div class="synth-block-container">
+            <p class="component-tag">Amplitude Envelope</p>
+            <div class="synth-params-list">
+
+                <div class="synth-param-pair-container">
+                    <p class="synth-param-name">Attack</p>
+                    <button class="synth-param-value" id="envelope-attack">Sine</p>
+                  </div>
+                  <div class="synth-param-pair-container">
+                      <p class="synth-param-name">Decay</p>
+                      <button class="synth-param-value" id="envelope-decay">Sine</p>
+                  </div>
+
+                  <div class="synth-param-pair-container">
+                      <p class="synth-param-name">Sustain</p>
+                      <button class="synth-param-value" id="envelope-sustain">Sine</p>
+                    </div>
+                    <div class="synth-param-pair-container">
+                        <p class="synth-param-name">Release</p>
+                        <button class="synth-param-value" id="envelope-release">Sine</p>
+                    </div>
+
+            </div>
+        </div>
+
+        <div class="synth-block-container">
+            <p class="component-tag">Filter</p>
+            <div class="synth-params-list">
+
+                <div class="synth-param-pair-container">
+                    <p class="synth-param-name">Type</p>
+                    <button class="synth-param-value" id="filter-type">Lowpass</p>
+                  </div>
+                  <div class="synth-param-pair-container">
+                      <p class="synth-param-name">Frequency</p>
+                      <button class="synth-param-value" id="filter-frequency">660Hz</p>
+                  </div>
+
+            </div>
+        </div>
+
+        <div class="synth-block-container">
+            <p class="component-tag">Filter Envelope</p>
+            <div class="synth-params-list">
+                
+                <div class="synth-param-pair-container">
+                    <p class="synth-param-name">Frequency</p>
+                    <button class="synth-param-value" id="filterEnvelope-frequency">660Hz</p>
+                </div>
+                <div class="synth-param-pair-container">
+                    <p class="synth-param-name">Attack</p>
+                    <button class="synth-param-value" id="filterEnvelope-attack">Sine</p>
+                  </div>
+                  <div class="synth-param-pair-container">
+                      <p class="synth-param-name">Decay</p>
+                      <button class="synth-param-value" id="filterEnvelope-decay">Sine</p>
+                  </div>
+
+                  <div class="synth-param-pair-container">
+                      <p class="synth-param-name">Sustain</p>
+                      <button class="synth-param-value" id="filterEnvelope-sustain">Sine</p>
+                    </div>
+                    <div class="synth-param-pair-container">
+                        <p class="synth-param-name">Release</p>
+                        <button class="synth-param-value" id="filterEnvelope-release">Sine</p>
+                    </div>
+
+            </div>
+        </div>
+        
+
+      </div>
+
+      <div id="randomize-button-container">
+        <button id="randomize-button">Randomize</button>
+      </div>
+
+      <div id="keyboard-container">
+
+        <div id="black-keys-row-container">
+            <!-- <div class="black-key"></div>
+            <div class="black-key"></div>
+            <div class="black-space-key"></div>
+            <div class="black-key"></div>
+            <div class="black-key"></div>
+            <div class="black-key"></div>
+            <div class="black-space-key"></div>
+            <div class="black-key"></div> -->
+        </div>
+        
+        <div id="white-keys-row-container">
+
+            <!-- <div class="white-key"></div>  -->
+        </div>
+
+      </div>
+
+
+      <p id="tutorial-title">About The R-Synth</p>
+      <p name='tutorial' class="tutorial-text">Click on the 'Randomize' button to create a new synth.</p>
+      <p class="tutorial-text">Every colored value will get randomized for you. Click on any value to stop it from changing.</p>
+      <p class="tutorial-text">You can use your mouse, computer keyboard or external MIDI to play.</p>
+      <p class="tutorial-text">Use headphones or external speakers for a better experience</p>
+      <p class="tutorial-text" id="my-name">This is a sound experiment by  <a href="https://www.davidazar.mx" target="_blank">David Azar</a>. Come say hi!.</p>
+
+    </div>
+
+
+    
+  </body>
+</html>
