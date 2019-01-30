@@ -13,3 +13,7 @@ function sendKeyboardEvent(note){
 function sendRandomizationEvent(){
     ga('send', 'event', "Randomize");
 }
+
+function sendTutorialEvent(){
+    ga('send', 'event', "Tutorial");
+}

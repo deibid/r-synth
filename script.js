@@ -34,6 +34,7 @@ function setup(){
 
 function loadTutorialAnimation(){
   $("#tutorial-title").click(() =>{
+    sendTutorialEvent();
     $([document.documentElement, document.body]).animate({
         scrollTop: $("#tutorial-title").offset().top
     }, 800);
