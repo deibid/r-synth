@@ -19,6 +19,7 @@ function setup(){
 
 
   $("#randomize-button").click(function(){
+    sendRandomizationEvent();
     assignSynthParameters();
   });
 

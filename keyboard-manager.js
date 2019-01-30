@@ -94,6 +94,7 @@ function setClickListeners(){
             
             let id = this.id;
             // console.log("mousedown key. ID:> "+id);
+            sendMouseEvent(id);
             playNoteOnSynths(id,1);
             setUIKeyToActive(id);
         });
@@ -147,6 +148,7 @@ function keyPressed(){
 
     // console.log("note to play "+note);
 
+    sendKeyboardEvent(note);
     playNoteOnSynths(note,1);
     setUIKeyToActive(note);
 

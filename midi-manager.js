@@ -34,6 +34,10 @@ function enableMidi(){
           let note = getNoteFromMIDIMessage(e);
           let velocity = getVelocityFromMIDIMessage(e);
   
+
+          sendMidiEvent(note);
+
+
           playNoteOnSynths(note,velocity);
           setUIKeyToActive(note);
         //   connectVibratoToSynthVoice(note);
